@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import WhatsappContainer from "./containers/WhatsappContainer";
+import Facebook from "./components/Facebook";
+import Loader from "./components/Loader";
+
+const stageMap = {
+  loader: Loader,
+  start: Facebook,
+  whatsapp: WhatsappContainer
+};
 
 function App() {
+  const [stage, setStage] = useState("start");
+  const handleNextStage = nextStage => {
+    setStage(nextStage);
+  };
+
+  const StageComponent = stageMap[stage];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StageComponent onNext={handleNextStage} />
     </div>
   );
 }

@@ -11,6 +11,7 @@ border-left:1px solid ${colors.darkGray};
 display:flex;
 flex-direction:column;
 flex:1;
+overflow:hidden;
 `
 
 

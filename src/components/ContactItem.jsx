@@ -91,11 +91,9 @@ const ContactItem = ({ id, image, title, messages, selected, onClick, idx }) => 
 
     useEffect(() => {
         if (!ref) return;
-        if (idx % 2 === 0) {
-            setTimeout(() => {
-                thanos(ref.current);
-            }, 1000 * 3 *  idx)
-        }
+        setTimeout(() => {
+            thanos(ref.current);
+        }, 1000 * 4 * idx)
     }, [ref])
     return (
         <DynamicWrapper selected={selected} onClick={_onClick} innerRef={ref}>
